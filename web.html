@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f4ec">
+  <title>Chào, mình là bạn ✳</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --paper: #f7f4ec;
+      --ink: #20241f;
+      --green: #b9e769;
+      --line: #dcd9ce;
+      --card: #fffdf7;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Manrope, sans-serif;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      width: min(1100px, calc(100% - 44px));
+      margin: auto;
+    }
+
+    .nav {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .logo {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -.7px;
+    }
+
+    .logo span { color: #628b2a; }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      font-size: 13px;
+      color: #55584f;
+    }
+
+    .navlinks a:hover { color: #628b2a; }
+
+    .pill {
+      background: var(--ink);
+      color: white;
+      padding: 11px 17px;
+      border-radius: 99px;
+      font-weight: 700;
+    }
+
+    .hero {
+      padding: 92px 0 86px;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .eyebrow, .mono {
+      font: 11px 'DM Mono', monospace;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: #697064;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: #83b344;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px #e6edda;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 7vw, 82px);
+      letter-spacing: -6px;
+      line-height: .99;
+      margin: 25px 0 22px;
+      font-weight: 800;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: #719a3c;
+    }
+
+    .intro {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #66695f;
+      max-width: 490px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 30px;
+      align-items: center;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      border-radius: 99px;
+      background: var(--green);
+      padding: 14px 20px;
+      font-size: 13px;
+      font-weight: 800;
+      transition: transform .2s;
+    }
+
+    .button:hover { transform: translateY(-3px); }
+    .textlink { font-size: 13px; font-weight: 700; padding: 12px; }
+
+    .art {
+      position: relative;
+      min-height: 340px;
+      display: grid;
+      place-items: center;
+    }
+
+    .sun {
+      width: 270px;
+      height: 270px;
+      border-radius: 50%;
+      background: #f3c65f;
+      position: absolute;
+      right: 34px;
+      top: 20px;
+    }
+
+    .blob {
+      width: 260px;
+      height: 230px;
+      border-radius: 48% 52% 35% 65% / 49% 39% 61% 51%;
+      background: #a6ce6a;
+      position: absolute;
+      right: 80px;
+      bottom: 22px;
+      transform: rotate(-12deg);
+    }
+
+    .face {
+      position: absolute;
+      right: 145px;
+      bottom: 73px;
+      font-size: 72px;
+      transform: rotate(7deg);
+      filter: drop-shadow(0 8px 0 #60863d);
+    }
+
+    .spark {
+      position: absolute;
+      font-size: 32px;
+      color: #20241f;
+    }
+
+    .s1 { right: 8px; top: 72px; }
+    .s2 { left: 30px; bottom: 57px; font-size: 23px; }
+
+    .sticker {
+      position: absolute;
+      right: 0;
+      bottom: 35px;
+      rotate: 7deg;
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 13px 17px;
+      font: 11px 'DM Mono', monospace;
+      box-shadow: 4px 5px 0 #20241f;
+    }
+
+    .section {
+      padding: 66px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 27px;
+    }
+
+    .section h2 {
+      font-size: 32px;
+      letter-spacing: -1.5px;
+      margin: 9px 0 0;
+    }
+
+    .mono { color: #818378; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      padding: 23px 22px;
+      min-height: 174px;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 7px 0 #e6e1d3;
+    }
+
+    .icon { font-size: 25px; }
+    .card h3 { font-size: 16px; margin: 22px 0 7px; }
+
+    .card p {
+      margin: 0;
+      color: #77796e;
+      line-height: 1.6;
+      font-size: 13px;
+    }
+
+    .note {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      align-items: center;
+      background: #e8efdc;
+      border-radius: 18px;
+      padding: 30px 34px;
+    }
+
+    .note h2 { font-size: 27px; margin: 7px 0 10px; }
+
+    .note p {
+      font-size: 13px;
+      color: #656a5d;
+      line-height: 1.7;
+      margin: 0;
+      max-width: 550px;
+    }
+
+    .note .button {
+      white-space: nowrap;
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .footer {
+      padding: 30px 0 42px;
+      display: flex;
+      justify-content: space-between;
+      color: #77796e;
+      font-size: 12px;
+    }
+
+    .footer b { color: var(--ink); }
+    .cursor { display: inline-block; animation: blink 1s steps(2) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    @media (max-width: 720px) {
+      .nav { height: 70px; }
+      .navlinks { gap: 14px; }
+      .navlinks a:not(.pill) { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 65px 0 45px; gap: 0; }
+      .hero h1 { letter-spacing: -4px; }
+      .art { min-height: 300px; }
+      .sun { right: calc(50% - 142px); }
+      .blob { right: calc(50% - 130px); }
+      .face { right: calc(50% - 66px); }
+      .sticker { right: 6%; }
+      .cards { grid-template-columns: 1fr; }
+      .card { min-height: 145px; }
+      .note { grid-template-columns: 1fr; padding: 24px; }
+      .note .button { justify-self: start; }
+      .section { padding: 50px 0; }
+      .footer { gap: 20px; flex-wrap: wrap; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="nav">
+      <a class="logo" href="#top">một chiếc <span>web</span> ✳</a>
+      <nav class="navlinks">
+        <a href="#ve-minh">Về mình</a>
+        <a href="#so-thich">Sở thích</a>
+        <a class="pill" href="mailto:hello@example.com">Bắt chuyện ↗</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> một người đang trên đường tìm vibe</div>
+          <h1>Chào, mình<br>là <em>bạn</em><span class="cursor">_</span></h1>
+          <p class="intro">
+            Đang cập nhật bio xịn hơn... Tạm thời thì mình thích những ngày vui,
+            đồ ăn ngon và mấy ý tưởng tự dưng nảy ra lúc 2 giờ sáng.
+          </p>
+          <div class="actions">
+            <a class="button" href="#ve-minh">Khám phá một chút <span>↓</span></a>
+            <a class="textlink" href="mailto:hello@example.com">Hoặc nhắn mình →</a>
+          </div>
+        </div>
+
+        <div class="art" aria-label="Minh họa mặt trời và nhân vật dễ thương">
+          <div class="sun"></div>
+          <div class="blob"></div>
+          <div class="face">☺</div>
+          <span class="spark s1">✳</span>
+          <span class="spark s2">✦</span>
+          <div class="sticker">MOOD HÔM NAY: ỔN ÁP</div>
+        </div>
+      </section>
+
+      <section class="section" id="ve-minh">
+        <div class="section-head">
+          <div>
+            <div class="mono">01 / VỀ MÌNH</div>
+            <h2>Không cần quá nghiêm túc.</h2>
+          </div>
+          <div class="mono">✳ 100% phiên bản thử nghiệm</div>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="icon">🧃</div>
+            <h3>Nạp năng lượng</h3>
+            <p>Trà sữa, cà phê hay một giấc ngủ ngon — tùy ngày.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🪴</div>
+            <h3>Đang lớn lên</h3>
+            <p>Học thêm điều mới, chậm một chút cũng chẳng sao.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🪩</div>
+            <h3>Luôn tò mò</h3>
+            <p>Thích khám phá những thứ hay ho chưa biết tên.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="so-thich">
+        <div class="note">
+          <div>
+            <div class="mono">02 / LỜI NHẮN NHỎ</div>
+            <h2>Ê, chào bạn nha 👋</h2>
+            <p>
+              Web này là góc nhỏ của mình trên internet. Nếu có chung sở thích
+              hoặc chỉ muốn tám chuyện, cứ gửi lời chào nhé!
+            </p>
+          </div>
+          <a class="button" href="mailto:hello@example.com">Gửi lời chào ↗</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Được làm bằng một chút <b>tò mò</b> và nhiều cà phê ☕</span>
+      <span>© <span id="year"></span> bạn nha</span>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
